@@ -1,0 +1,71 @@
+/**
+ * @file main.c
+ * @brief Programa para administrar datos de trabajadores.
+ */
+
+#include <stdio.h>
+#include <string.h>
+
+/**
+ * @struct Trabajador
+ * @brief Estructura para almacenar datos de los trabajadores.
+ */
+
+struct Trabajador {
+    char nombre[50]; /**< Nombre del trabajador */
+    int clave; /**< Clave del trabajador */
+    float sueldo; /**< Sueldo del trabajador */
+    int horasTrabajadas; /**< Horas trabajadas por el trabajador */
+};
+
+/**
+ * @brief Función principal.
+ * @return 0 si todo fue exitoso.
+ */
+int main() {
+    struct Trabajador trabajadores[3]; // Arreglo para almacenar hasta 3 trabajadores
+    int opcion, i;
+
+    do {
+        printf("\nMenú:\n");
+        printf("1 - Dar de alta trabajadores\n");
+        printf("2 - Consultas generales\n");
+        printf("3 - Consultas por clave\n");
+        printf("4 - Consultas por nombre\n");
+        printf("0 - Salir\n");
+        printf("Selecciona una opción: ");
+        scanf("%d", &opcion);
+
+        switch (opcion) {
+            case 1:
+                for (i = 0; i < 3; i++) {
+                    printf("Ingrese el nombre del trabajador: ");
+                    scanf("%s", trabajadores[i].nombre);
+                    printf("Ingrese la clave del trabajador: ");
+                    scanf("%d", &trabajadores[i].clave);
+                    printf("Ingrese el sueldo del trabajador: ");
+                    scanf("%f", &trabajadores[i].sueldo);
+                    printf("Ingrese las horas trabajadas: ");
+                    scanf("%d", &trabajadores[i].horasTrabajadas);
+                }
+                break;
+            case 2:
+                printf("\nDatos de los trabajadores:\n");
+                for (i = 0; i < 3; i++) {
+                    printf("Nombre: %s, Clave: %d, Sueldo: %.2f, Horas trabajadas: %d\n",
+                           trabajadores[i].nombre, trabajadores[i].clave,
+                           trabajadores[i].sueldo, trabajadores[i].horasTrabajadas);
+                }
+                break;
+            // Implementa las otras opciones aquí (consultas por clave y por nombre)
+            // ...
+            case 0:
+                printf("¡Hasta luego!\n");
+                break;
+            default:
+                printf("Opción inválida. Inténtalo de nuevo.\n");
+        }
+    } while (opcion != 0);
+
+    return 0;
+}
